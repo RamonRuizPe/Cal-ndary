@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Yeseva+One&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg-lightblue{
+    background-color:#60C3D5;
+}
+
+.redwine{
+    color:#950101;
+}
+
+::selection{
+    background-color: #224E9C;
+    color:white;
+}
