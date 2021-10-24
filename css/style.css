@@ -12,7 +12,17 @@ body{
     color:#950101;
 }
 
+.btn{
+    background-color: #D2524A
+    ;
+    color: #fff;
+}
+
 ::selection{
     background-color: #224E9C;
     color:white;
+}
+
+#desc{
+    text-align: justify;
 }
