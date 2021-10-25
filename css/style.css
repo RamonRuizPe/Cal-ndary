@@ -6,6 +6,7 @@ html {
 
 body{
     font-family: 'Poppins', sans-serif;
+    overflow:scroll;
     overflow-x: hidden;
 }
 
@@ -23,11 +24,15 @@ body{
 
 .btn-contact{
     background-color: #D2524A;
+    color: black;
+    transition: all 0.8s;
 }
-/* .btn{
-    background-color: #D2524A;
-    color: #fff;
-} */
+
+.btn-contact:hover{
+    background-color: #950101;
+    color:white;
+    transition: all 0.8s;
+}
 
 .fill_button{
     position:relative;
@@ -69,7 +74,7 @@ body{
     border-radius: 0;
     background-color:#60C3D5;
     color:#f5f5f5;
-  }
+}
   
 .input-border-bottom:focus{
     border:none;
@@ -77,7 +82,16 @@ body{
     border-radius: 0;
     background-color:#60C3D5;
     color:#f5f5f5;
-  }
+}
+
+.input-border-bottom:-webkit-autofill,
+.input-border-bottom:autofill{
+    border:none;
+    border-bottom: 2px solid #224E9C;
+    border-radius: 0;
+    background-color:#60C3D5;
+    color:#f5f5f5;
+}
 
 ::selection{
     background-color: #224E9C;
@@ -86,4 +100,16 @@ body{
 
 #desc{
     text-align: justify;
+}
+
+/*Scrollbar customization*/
+
+::-webkit-scrollbar{
+    width: 0;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #224E9C;
+}
+::-webkit-scrollbar-track{  
+    background-color: transparent;
 }

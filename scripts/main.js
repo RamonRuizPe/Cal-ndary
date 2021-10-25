@@ -3,7 +3,7 @@ const btnEdit = document.querySelectorAll(".btn-contact");
       btnEdit.forEach((btn) => {
         btn.addEventListener("click", async (e) => {
 
-          document.getElementById("name").scrollIntoView({
+          document.getElementById("message").scrollIntoView({
             behavior: "smooth",
             block: "center"
           });
@@ -18,3 +18,10 @@ var cleave = new Cleave('#phone', {
   phoneRegionCode: 'MX'
 });
 
+window.addEventListener('scroll', this.handleScroll, true);
+
+handleScroll = (e) => {
+  if (e.target.classList.contains("on-scrollbar") === false) {
+      e.target.classList.add("on-scrollbar");
+  }
+}
