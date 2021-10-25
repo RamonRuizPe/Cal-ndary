@@ -12,11 +12,11 @@ import {
 
 const db = getFirestore(app);
 const taskform = document.getElementById("prod-form");
-const nameform = document.getElementById("prod-title"); //Tasktitle
-const l_nameform = document.getElementById("prod-description"); //tastdescr
-const emailform = document.getElementById("image-link"); //imglink
-const phoneform = document.getElementById("prod-stock"); //prodstock
-const messageform = document.getElementById("prod-price"); //prodprice
+const nameform = document.getElementById("name"); //Tasktitle
+const l_nameform = document.getElementById("l_name"); //tastdescr
+const emailform = document.getElementById("email"); //imglink
+const phoneform = document.getElementById("phone"); //prodstock
+const messageform = document.getElementById("message"); //prodprice
 
 let editstatus = false;
 let id = "";
@@ -102,7 +102,7 @@ taskform.addEventListener("submit", async (e) => {
   const phone = phoneform.value;
   const message = messageform.value;
   if (!editstatus) {
-    await savetask(name, l_name, email, phone, message);
+    await saveform(name, l_name, email, phone, message);
   }
 //   } else {
 //     await updateTask(id, {
@@ -116,9 +116,11 @@ taskform.addEventListener("submit", async (e) => {
 //     document.getElementById("btn-task-form").innerText = "save";
 //     id = "";
 //   }
-
+swal({
+    title: "Formulario enviado correctamente", 
+    icon: "success"});
   taskform.reset();
-  tasktitle.focus();
+  nameform.focus();
 });
 
 // function findPos(obj) {

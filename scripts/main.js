@@ -13,3 +13,8 @@ const btnEdit = document.querySelectorAll(".btn-contact");
     });
 });
 
+var cleave = new Cleave('#phone', {
+  phone: true,
+  phoneRegionCode: 'MX'
+});
+
