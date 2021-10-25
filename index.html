@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,7 @@
                       <img src="img/calendar.png" class="img-fluid">
                     </div>
                     <div class="col-6">
-                      <div class="mt-5 " id="desc">
+                      <div class="mt-0" id="desc">
                         <br>
                         <h1 class=>La mejor forma de organizarte y cumplir tus objetivos</h1>
                         <p > Si estás buscando una opción para planificar y administrar mejor tu tiempo en Caléndari encontrarás la solución.
@@ -52,18 +52,57 @@
     </section>
     <section id="contenido">
       <!-- Aquí va el código de Marquito, lo del contenido -->
-
+      <div class="container-fluid p-0 min-vh-100 d-flex flex-column">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur minima molestiae alias? Eius ratione, rem natus earum architecto nisi perspiciatis illo fugit error velit repellat explicabo voluptas, cumque esse quia!
+      </div>
     </section>
     <section id="contact p-0">
-      <div class="container-fluid p-0 min-vh-100 d-flex flex-column bg-lightblue">
-        <div class="row flex-fill flex-column align-content-center">
-          <div class="col-md-6 my-auto">
-            <form>
-              <div class="form-group">
-                <label class="ls text-uppercase">Nombre*</label>
-                <input type="text form-control" id="name" name="name" placeholder="Ingresa tu nombre" required="required">
+      <div class="container-fluid p-0 min-vh-100 d-flex flex-column">
+        <div class="row pb-2">
+          <div class="col-md-4">
+            <div class="text-center mb-0 p-3 bg-darkblue">
+              <h2 class="fs-2 fs-sm-3 mb-0 text-white"> <span class="font-weight-bold">CONTACTO</span></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-fill flex-column align-content-center bg-lightblue mt-n4">
+          <div class="col-md-8 my-auto">
+            <div class="row">
+              <div class="col-md-6">
+                <form id="prod-form">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="ls text-uppercase">Nombre(s)*</label>
+                        <input type="text" class="form-control input-border-bottom" id="name" name="name" placeholder="Ingresa tu(s) nombre(s)" required="required">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="ls text-uppercase">Apellido(s)*</label>
+                        <input type="text" class="form-control input-border-bottom" id="l_name" name="l_name" placeholder="Ingresa tu(s) apellido(s)" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="ls text-uppercase">Correo electrónico*</label>
+                    <input type="email" class="form-control input-border-bottom" id="email" name="email" placeholder="Ingresa tu email" required="required">
+                  </div>
+                  <div class="form-group">
+                    <label class="ls text-uppercase">Teléfono</label>
+                    <input type="tel" class="form-control input-border-bottom" id="email" name="email" placeholder="Ingresa tu número de teléfono">
+                  </div>
+                  <div class="form-group">
+                    <label class="ls text-uppercase">¡Queremos escucharte!</label>
+                    <textarea name="message" id="message" class="form-control input-border-bottom" placeholder="Introduce tu mensaje"></textarea>
+                  </div>                  
+                </form>
+                <button id="send_contact" class="btn w-100 fill_button"><span>Enviar</span></button>
               </div>
-            </form>
+              <div class="col-md-5">
+                <img src="img/squid.png" class="img-fluid">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -71,5 +110,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/index.js" type="module"></script>
+    <script src="scripts/contact.js" type="module"></script>
 </body>
 </html>
