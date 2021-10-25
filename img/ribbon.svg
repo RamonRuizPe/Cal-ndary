@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px; height: 150px;"><style>
+     .line-ribbon1 {animation:line-ribbon1-tick 2s infinite; stroke-dasharray: 110; stroke-dashoffset: 110;}
+     @keyframes line-ribbon1-tick {
+         20%{stroke-dashoffset: 110;}
+         60%{stroke-dashoffset: 0;}
+         100%{stroke-dashoffset: 0;}
+     }
+     @media (prefers-reduced-motion: reduce) {
+         .line-ribbon1 {
+             animation: none;
+         }
+     }
+    </style><path class="stroke1 fill1" d="M78 15H22C21.4477 15 21 15.4477 21 16V84.1493C21 84.9444 21.883 85.4215 22.548 84.9858L49.452 67.3591C49.7848 67.141 50.2152 67.141 50.548 67.3591L77.452 84.9858C78.117 85.4215 79 84.9444 79 84.1493V16C79 15.4477 78.5523 15 78 15Z" fill="#fff" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></path><path class="line-ribbon1 stroke2" d="M34 44.8L43.4286 54L67 31" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></path></svg>

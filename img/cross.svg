@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px; height: 150px;"><style>
+     .line-cross1-a {animation:line-cross1-draw 2s infinite; stroke-dasharray: 150;}
+     .line-cross1-b {animation:line-cross1-draw 2s infinite; stroke-dasharray: 150;}
+     @keyframes line-cross1-draw {
+         0%{stroke-dashoffset: 150;}
+         100%{stroke-dashoffset: 0;}
+     }
+     @media (prefers-reduced-motion: reduce) {
+         .line-cross1-a, .line-cross1-b {
+             animation: none;
+         }
+     }
+    </style><line class="line-cross1-a stroke1" x1="4.70711" y1="4.29289" x2="96.7071" y2="96.2929" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></line><line class="line-cross1-b stroke1" x1="3.29289" y1="96.2929" x2="95.2929" y2="4.29289" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></line></svg>

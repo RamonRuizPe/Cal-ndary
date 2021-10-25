@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px; height: 150px;"><style>
+     .line-book1 {animation:line-book1-tick 2s infinite; stroke-dasharray: 110; stroke-dashoffset: 110;}
+     @keyframes line-book1-tick {
+         20%{stroke-dashoffset: 110;}
+         60%{stroke-dashoffset: 0;}
+         100%{stroke-dashoffset: 0;}
+     }
+     @media (prefers-reduced-motion: reduce) {
+         .line-book1 {
+             animation: none;
+         }
+     }
+    </style><rect class="stroke1 fill1" x="21" y="7" width="53" height="86" fill="#fff" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></rect><rect class="stroke1 fill1" width="12" height="86" transform="matrix(-1 0 0 1 21 7)" fill="#fff" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></rect><rect class="stroke1 fill1" x="31" y="22" width="33" height="18" fill="#fff" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></rect><path class="stroke1" d="M36 28H59" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></path><path class="stroke1" d="M36 34H59" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></path><circle class="stroke2 fill2" cx="74" cy="75" r="18" fill="#fff" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></circle><path class="line-book1 stroke2 fill2" d="M65 76.8L70.1429 82L83 69" stroke="#000" stroke-width="2px" style="animation-duration: 2s;"></path></svg>
