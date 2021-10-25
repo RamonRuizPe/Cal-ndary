@@ -1,5 +1,5 @@
 
-const btnEdit = document.querySelectorAll(".btn");
+const btnEdit = document.querySelectorAll(".btn-contact");
       btnEdit.forEach((btn) => {
         btn.addEventListener("click", async (e) => {
 
@@ -12,3 +12,4 @@ const btnEdit = document.querySelectorAll(".btn");
         });
     });
 });
+
