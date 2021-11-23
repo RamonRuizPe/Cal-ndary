@@ -22,6 +22,12 @@ body{
     color:#950101;
 }
 
+span.redbar{
+    display:inline-block;
+    border-bottom:2px solid #950101;
+    padding-bottom:4px;
+}
+
 .btn-contact{
     background-color: #D2524A;
     color: black;
