@@ -1,6 +1,6 @@
 import app from "./index.js";
 import {getFirestore, collection, doc, setDoc} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js';
 
 const db = getFirestore(app);
 const Auth = getAuth();
@@ -32,17 +32,21 @@ signupform.addEventListener('submit', (e) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      user.displayName = username + " " +userlname;
-      console.log(user);
-      signupform.reset();
-      // sendEmailVerification(Auth.currentUser)
+      // console.log(user);
+      const name = username + " " + userlname
+      updateProfile(user,{
+        displayName: name
+      })
+
       return setDoc(doc(db, "users", user.uid),{
         name: username,
         l_name: userlname,
         email: signupmail,
         usertype: 0
       });
-      // ...
+    }).then(() =>{
+      signupform.reset();
+      sendEmailVerification(Auth.currentUser)
     })
     .catch((error) => {
       const errorCode = error.code;

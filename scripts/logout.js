@@ -9,6 +9,9 @@ logout.addEventListener('click', e =>{
     e.preventDefault();
     signOut(auth).then(()=>{
         //Log out successful.
+        $('#nav-logout').hide();
+        $('#nav-signin').show("fade", 1000);
+        // location.reload()
     }).catch((error) =>{
         // An error happened.
         const errorCode = error.code;
