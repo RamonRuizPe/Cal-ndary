@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+    background: linear-gradient(
+      60deg,
+      rgba(34, 78, 156, 100) 0%,
+      rgba(0, 172, 193, 1) 100%
+    );
+    color: white;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-right: 40px solid #224e9c;
+    border-bottom: 20px solid transparent;
+    float: right;
+    margin-right: -22px;
+    margin-top: 4px;
+}
+
+.dialogBox {
+    background-color: #224e9c;
+    width: 80%;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.btnStyle {
+    background-color: #d2524a;
+    color: white;
+    border: none;
+}
+  
+.btnStyle:hover {
+    background-color: #950101;
+    border-color: white;
+    color: white;
+}
