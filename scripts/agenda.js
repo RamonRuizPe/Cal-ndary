@@ -8,8 +8,7 @@ prevmonth.addEventListener('click', () => {
     $(".loader-wrapper").show();
     $('#days').slick('unslick');
         if (date_changes.getMonth() == 0){
-            getDaysArray(date.getFullYear() - 1, 11);
-            date_changes.setFullYear(date_changes.getFullYear() - 1);
+            getDaysArray(date.getFullYear() - 1, 12);
 
             $(document).ready(function(){
                 $('#days').slick({
@@ -42,11 +41,12 @@ prevmonth.addEventListener('click', () => {
                       ]
                 });
               });
+
+              date_changes.setFullYear(date_changes.getFullYear() - 1);
     
         }
         else{
             getDaysArray(date_changes.getFullYear(), date_changes.getMonth());
-            date_changes.setMonth(date_changes.getMonth() - 1);
 
             $(document).ready(function(){
                 $('#days').slick({
@@ -79,6 +79,8 @@ prevmonth.addEventListener('click', () => {
                       ]
                 });
               });
+            
+            date_changes.setMonth(date_changes.getMonth() - 1);
         }
     $(".loader-wrapper").fadeOut("slow");
 });
@@ -87,7 +89,7 @@ nextmonth.addEventListener('click', () => {
     $(".loader-wrapper").show();
     $('#days').slick('unslick');
         if (date_changes.getMonth() == 11){
-            getDaysArray(date.getFullYear() + 1, 0);
+            getDaysArray(date_changes.getFullYear() + 1, 1);
             
             $(document).ready(function(){
                 $('#days').slick({
@@ -124,7 +126,7 @@ nextmonth.addEventListener('click', () => {
             date_changes.setFullYear(date_changes.getFullYear() + 1);
         }
         else{
-            getDaysArray(date_changes.getFullYear(), date_changes.getMonth() + 1);
+            getDaysArray(date_changes.getFullYear(), date_changes.getMonth() + 2);
     
             $(document).ready(function(){
                 $('#days').slick({
@@ -173,6 +175,7 @@ const getDaysArray = (function() {
       const date = new Date(year, monthIndex, 1);
       const result = [];
       agendayear.innerHTML = `Tu agenda ${year}`;
+      console.log(year)
       divmonth.innerHTML = `<h1 class="text-center">${getMonthName(monthIndex).toUpperCase()}</h1>`;
       prevmonth.innerHTML = `<a href="#" class="a-month"><i class="fas fa-chevron-left"></i> ${getMonthName(monthIndex - 1).toUpperCase()}</a>`;
       nextmonth.innerHTML = `<a href="#" class="a-month">${getMonthName(monthIndex + 1).toUpperCase()} <i class="fas fa-chevron-right"></i></a>`;
@@ -184,7 +187,6 @@ const getDaysArray = (function() {
                             <h2>${date.getDate()}<h2>
                             <h5>${weekdays[date.getDay()]}</h5>
                         </div>`
-                        console.log(`${date.getDate()}-${weekdays[date.getDay()]}`)
       date.setDate(date.getDate() + 1);
       }
       return result;
@@ -198,7 +200,10 @@ const getMonthName = (function() {
     "noviembre", "diciembre"]);
     return (month) => {
         if(month == 12){
-            return months[0];
+            return months[0] + " " + date_changes.getFullYear();
+        }
+        else if(month == -1){
+            return months[11] + " " + date_changes.getFullYear();
         }
         return months[month];
     }
