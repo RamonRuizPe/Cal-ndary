@@ -4,6 +4,20 @@
     border-style: solid;
     border-color: #224E9C;
 } */
+.agenda-day{
+    text-decoration: none;
+    color: black;
+}
+
+.agenda-day:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.agenda-day:focus(){
+    color:#950101;
+}
+
 
 .a-month{
     text-decoration: none;
