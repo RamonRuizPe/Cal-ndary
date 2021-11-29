@@ -176,6 +176,7 @@ const getDaysArray = (function() {
     const weekdays = Object.freeze([ 'domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado' ]);
     return (year, month) => {
       days.innerHTML = "";
+      daycontent.innerHTML = "";
       const monthIndex = month - 1;
       const date = new Date(year, monthIndex, 1);
       const result = [];
