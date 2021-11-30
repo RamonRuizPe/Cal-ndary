@@ -3,10 +3,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-//   getDoc,
-//   onSnapshot,
-//   deleteDoc,
-//   doc,
+  getDoc,
+  onSnapshot,
+  deleteDoc,
+  doc
 //   updateDoc
 } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 
@@ -18,6 +18,9 @@ const emailform = document.getElementById("email"); //imglink
 const phoneform = document.getElementById("phone"); //prodstock
 const messageform = document.getElementById("message"); //prodprice
 
+//Conectar el admin.html
+const mesgContainer = document.getElementById("mesg-container")
+
 let editstatus = false;
 let id = "";
 
@@ -28,7 +31,11 @@ const saveform = (name, l_name, email, phone, message) =>
     email:email,
     phone:phone,
     message:message
-  });
+});
+
+const getMesg = (id) => getDoc(doc(db, "Contact-forms", id));
+const onGetMesg = (callback) => onSnapshot(collection(db, "Contact-forms"), callback);
+const deleteMesg = (id) => deleteDoc(doc(db, "Contact-forms", id));
 
 // const gettask = () => getDocs(collection(db, "videogames_items"));
 
@@ -93,6 +100,37 @@ const saveform = (name, l_name, email, phone, message) =>
 //     });
 //   });
 // });
+
+window.addEventListener("DOMContentLoaded", async (e) => {
+  onGetMesg((querySnapshot) => {
+    mesgContainer.innerHTML = "";
+    let aux = 0;
+    querySnapshot.forEach((doc) => {
+      aux++;
+      const mesg = doc.data();
+      mesg.id = doc.id;
+
+      mesgContainer.innerHTML += `<div class="card mesgBox" style="width: 18rem;">
+      <div class="card-body">
+        <p class="numMesg">Solicitud ${aux}</p>
+        <h5 class="card-title">${mesg.name} ${mesg.l_name}</h5>
+        <p class="card-text">Correo: ${mesg.email}</p>
+        <p class="card-text">Número: ${mesg.phone}</p>
+        <p class="card-text">Mensaje: ${mesg.message}</p>
+        <button id="clearBtn" class="btn-clear" data-id="${mesg.id}"></button>
+      </div>
+    </div>`;
+    
+      const clearBtn = document.querySelectorAll(".btn-clear");
+      clearBtn.forEach((btn) => {
+        btn.addEventListener("click", async (e) => {
+          await deleteMesg(e.target.dataset.id)
+        })
+      })
+
+    });
+  });
+});
 
 taskform.addEventListener("submit", async (e) => {
   e.preventDefault();

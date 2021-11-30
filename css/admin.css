@@ -1,0 +1,32 @@
+#clearBtn {
+    background-image: url("../img/button.png");
+    height: 44px;
+    width: 44px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+}
+
+.mesgContainer {
+    display: flex;
+}
+
+.mesgBox {
+    margin: 5px;
+}
+
+.numMesg {
+    background-color: aliceblue;
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+    .mesgContainer {
+        display: block;
+    }
+}
