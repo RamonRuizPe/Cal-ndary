@@ -7,17 +7,23 @@
 .agenda-day{
     text-decoration: none;
     color: black;
+    border:0;
+    outline: 0;
+    box-shadow: none !important;
 }
 
 .agenda-day:hover{
     text-decoration: none;
     color:white;
+    border:0;
+    outline: 0;
 }
 
-.agenda-day:focus(){
-    color:#950101;
+.agenda-day:focus{
+    border:0;
+    outline: 0;
+    box-shadow: none !important;
 }
-
 
 .a-month{
     text-decoration: none;
