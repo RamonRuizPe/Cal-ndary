@@ -26,6 +26,16 @@ body {
     padding: 5px;
 }
 
+input[type="checkbox"]{
+    display: none;
+}
+
+input[type="checkbox"]:checked + label{
+    border: 2px solid #D2524A;
+    border-radius: 5px;
+}
+
+
 .preference-btn {
     height: 50px;
     width: 50px;
@@ -38,7 +48,9 @@ body {
     margin: 0 auto;
     display: block;
     border: 5px hidden;
+    /* transition: all 0.8s; */
 }
+
 .preference-btn1 {
     height: 50px;
     width: 50px;
