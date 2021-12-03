@@ -11,7 +11,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
 //Bring Firebase User Authentication
-// import { getAuth, onAuthStateChanged } from "/firebase/auth";
+//import { getAuth, onAuthStateChanged } from "/firebase/auth";
 
 //Get our Firebase project
 const db = getFirestore(app);
