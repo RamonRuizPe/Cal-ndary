@@ -68,7 +68,6 @@ const getTasks = async (uid) => {
             `;
         }
         if(docSnap.data().tasks[i].dia == 'martes'){
-            console.log("entre a martes");
             tasksMartes.innerHTML += `
             <div class="task">
                 <span class='taskname' id="taskname">
@@ -147,10 +146,12 @@ const deleteTask = (task,day,uid) =>{
     });
 }
 window.addEventListener('DOMContentLoaded', async(e) =>{
+    
     onAuthStateChanged(auth, async(user) => {
         if (user) {
           const uid = user.uid;
           await getTasks(uid);
+          $(".loader-wrapper").fadeOut("slow");
           const current_tasks_1 = document.querySelectorAll('.delete');
         console.log(current_tasks_1)
         for(let i=0; i<current_tasks_1.length; i++){
@@ -166,7 +167,6 @@ window.addEventListener('DOMContentLoaded', async(e) =>{
 onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      console.log(uid);
       taskForm.addEventListener('submit', async(e) => {
         e.preventDefault();
         if(newTaskLunes.value.length == 0){
