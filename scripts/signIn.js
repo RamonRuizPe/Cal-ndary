@@ -37,11 +37,11 @@ signinform.addEventListener('submit', e =>{
         signinform.reset();
         $('#signin').modal('hide');
         
-        window.location.pathname = "/Cal-ndary/pages/agenda.html";
+        window.location.pathname = "/Cal-ndary/pages/dashboard.html";
         //Assign alert to user
         const user = Auth.currentUser;
         const name = user.displayName;
-        location.href='../pages/agenda.html'
+        // location.href='../pages/dashboard.html'
         swal(`¡Hola ${name}!`, {
           buttons: false,
           timer: 1000,

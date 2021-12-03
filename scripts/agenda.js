@@ -223,8 +223,8 @@ const getDaysArray = (function() {
       const result = [];
       agendayear.innerHTML = `Tu agenda ${year}`;
       divmonth.innerHTML = `<h1 class="text-center">${getMonthName(monthIndex).toUpperCase()}</h1>`;
-      prevmonth.innerHTML = `<a href="#" class="a-month"><i class="fas fa-chevron-left"></i> ${getMonthName(monthIndex - 1).toUpperCase()}</a>`;
-      nextmonth.innerHTML = `<a href="#" class="a-month">${getMonthName(monthIndex + 1).toUpperCase()} <i class="fas fa-chevron-right"></i></a>`;
+      prevmonth.innerHTML = `<a href="#" class="a-month text-white"><i class="fas fa-chevron-left"></i> ${getMonthName(monthIndex - 1).toUpperCase()}</a>`;
+      nextmonth.innerHTML = `<a href="#" class="a-month text-white">${getMonthName(monthIndex + 1).toUpperCase()} <i class="fas fa-chevron-right"></i></a>`;
       while (date.getMonth() == monthIndex) {
         // result.push(`${date.getDate()}-${names[date.getDay()]}`);
         days.innerHTML += `
