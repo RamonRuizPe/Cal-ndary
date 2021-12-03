@@ -47,13 +47,7 @@ const getTasks = async (uid) => {
     if (docSnap.exists())
     {
         console.log("Document data:", docSnap.data());
-    } 
-    else 
-    {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-    for(let i=0; i<docSnap.data().tasks.length; i++)
+        for(let i=0; i<docSnap.data().tasks.length; i++)
     {
         if(docSnap.data().tasks[i].dia == 'lunes'){
             tasksLunes.innerHTML += `
@@ -129,6 +123,13 @@ const getTasks = async (uid) => {
         }
         
     }   
+    } 
+    else 
+    {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+    
 }
    
 //Create task
@@ -153,7 +154,6 @@ window.addEventListener('DOMContentLoaded', async(e) =>{
           await getTasks(uid);
           $(".loader-wrapper").fadeOut("slow");
           const current_tasks_1 = document.querySelectorAll('.delete');
-        console.log(current_tasks_1)
         for(let i=0; i<current_tasks_1.length; i++){
             current_tasks_1[i].addEventListener('click', e=> {
                 const day = current_tasks_1[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
@@ -196,12 +196,14 @@ onAuthStateChanged(auth, (user) => {
             });
         }
     
-    // let tasks = document.querySelectorAll(".task");
-    //     for(var i=0; i<tasks.length; i++){
-    //         tasks[i].onclick = function(){
-    //             this.classList.toggle('completed');
-    //         }
-    //     }
+        // let tasks = document.querySelectorAll(".task");
+        // console.log(tasks)
+        //     for(var i=0; i<tasks.length; i++){
+        //         tasks[i].addEventListener('click', async(e)=>{
+        //             this.classList.toggle('completed');
+        //         });
+                    
+        //     }
         document.querySelector("#newtask input").value = "";
     });
     
