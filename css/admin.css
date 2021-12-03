@@ -1,0 +1,66 @@
+/*NAVBAR*/
+.principalNav {
+    background: linear-gradient(
+        60deg,
+        rgba(34, 78, 156, 100) 0%,
+        rgba(0, 172, 193, 1) 100%
+    );
+    color: white;
+}
+
+.funcNavBar {
+    background-color: #DADDFC;
+}
+
+.nav-tabs .nav-link.active {
+    color: #950101;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #950101;
+}
+
+/*MENSAJERÍA*/
+.btn-clear {
+    background-image: url("../img/button.png");
+    height: 44px;
+    width: 44px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+}
+
+.mesgContainer {
+    display: flex;
+}
+
+.mesgBox {
+    margin: 5px;
+}
+
+.numMesg {
+    background-color: #D2524A;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.nameTitle {
+    text-align: center;
+}
+
+.mesgCard {
+    background-color: #EDEDED;
+    border-color: 1px solid green;
+}
+
+@media (max-width: 991.98px) {
+    .mesgContainer {
+        display: block;
+    }
+}
