@@ -17,7 +17,7 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar principalNav">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img
@@ -32,10 +32,10 @@
         </div>
     </nav>
     <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
-          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mensajería</button>
-          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Noticias</button>
+        <div class="nav nav-tabs funcNavBar" id="nav-tab" role="tablist">
+          <button class="nav-link active principalLink" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
+          <button class="nav-link principalLink" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mensajería</button>
+          <button class="nav-link principalLink" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Noticias</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -48,10 +48,84 @@
             </div>
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-news-tab">
-            <p>Aquí van los noticias</p>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <p>Subir una nueva sugerencia</p>
+                <div class="card">
+                  <div class="card-body">
+                    <form id="sugg-form">
+                      <div class="sugg-group mb-2">
+                        <select id="sugg-category" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                          <option selected>¿A qué preferencia se va a subir?</option>
+                          <option value="Videojuegos">Videojuegos</option>
+                          <option value="Lectura">Lectura</option>
+                          <option value="Deportes">Deportes</option>
+                          <option value="Arte">Arte</option>
+                          <option value="Fotografía">Fotografía</option>
+                          <option value="Tecnología">Tecnología</option>
+                          <option value="Astrología">Astrología</option>
+                          <option value="Anime">Anime</option>
+                        </select>
+                      </div>
+                      <div class="sugg-group mb-2">
+                        <input type="text" id="sugg-title" class="sugg-control" placeholder="Título" autofocus>
+                      </div>
+                      <div class="sugg-group mb-2">
+                        <textarea id="sugg-description" rows="3" class="sugg-control" placeholder="Descripción"></textarea>
+                      </div>
+                      <button id="btn-sugg-form" class="btn btn-primary">Subir</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8">
+                <nav>
+                  <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+                    <button class="nav-link active suggNavBar" id="nav-videojuegos-tab" data-bs-toggle="tab" data-bs-target="#nav-videojuegos" type="button" role="tab" aria-controls="nav-videojuegos" aria-selected="true">Videojuegos</button>
+                    <button class="nav-link" id="nav-lectura-tab" data-bs-toggle="tab" data-bs-target="#nav-lectura" type="button" role="tab" aria-controls="nav-lectura" aria-selected="false">Lectura</button>
+                    <button class="nav-link" id="nav-deportes-tab" data-bs-toggle="tab" data-bs-target="#nav-deportes" type="button" role="tab" aria-controls="nav-deportes" aria-selected="false">Deportes</button>
+                    <button class="nav-link" id="nav-arte-tab" data-bs-toggle="tab" data-bs-target="#nav-arte" type="button" role="tab" aria-controls="nav-arte" aria-selected="false">Arte</button>
+                    <button class="nav-link" id="nav-fotografia-tab" data-bs-toggle="tab" data-bs-target="#nav-fotografia" type="button" role="tab" aria-controls="nav-fotografia" aria-selected="false">Fotografía</button>
+                    <button class="nav-link" id="nav-tecnologia-tab" data-bs-toggle="tab" data-bs-target="#nav-tecnologia" type="button" role="tab" aria-controls="nav-tecnologia" aria-selected="false">Tecnología</button>
+                    <button class="nav-link" id="nav-astrologia-tab" data-bs-toggle="tab" data-bs-target="#nav-astrologia" type="button" role="tab" aria-controls="nav-astrologia" aria-selected="false">Astrología</button>
+                    <button class="nav-link" id="nav-anime-tab" data-bs-toggle="tab" data-bs-target="#nav-anime" type="button" role="tab" aria-controls="nav-anime" aria-selected="false">Anime</button>
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-videojuegos" role="tabpanel" aria-labelledby="nav-videojuegos-tab">
+                    <div id="videogames-container" class="container-fluid videogamesContainer mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-lectura" role="tabpanel" aria-labelledby="nav-lectura-tab">
+                    <div id="reading-container" class="container-fluid readingContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-deportes" role="tabpanel" aria-labelledby="nav-deportes-tab">
+                    <div id="sports-container" class="container-fluid sportsContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-arte" role="tabpanel" aria-labelledby="nav-arte-tab">
+                    <div id="art-container" class="container-fluid artContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-fotografia" role="tabpanel" aria-labelledby="nav-fotografia-tab">
+                    <div id="photography-container" class="container-fluid photographyContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-tecnologia" role="tabpanel" aria-labelledby="nav-tecnologia-tab">
+                    <div id="tech-container" class="container-fluid techContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-astrologia" role="tabpanel" aria-labelledby="nav-astrologia-tab">
+                    <div id="astrology-container" class="container-fluid astrologyContainer  mt-3"></div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-anime" role="tabpanel" aria-labelledby="nav-anime-tab">
+                    <div id="anime-container" class="container-fluid animeContainer  mt-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
     <script type="module" src="../scripts/index.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
     <script type="module" src="../scripts/contact.js"></script>
+    <script type="module" src="../scripts/adminSuggs.js"></script>
   </body>
 </html>

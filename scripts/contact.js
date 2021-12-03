@@ -33,7 +33,6 @@ const saveform = (name, l_name, email, phone, message) =>
     message:message
 });
 
-const getMesg = (id) => getDoc(doc(db, "Contact-forms", id));
 const onGetMesg = (callback) => onSnapshot(collection(db, "Contact-forms"), callback);
 const deleteMesg = (id) => deleteDoc(doc(db, "Contact-forms", id));
 
@@ -111,9 +110,9 @@ window.addEventListener("DOMContentLoaded", async (e) => {
       mesg.id = doc.id;
 
       mesgContainer.innerHTML += `<div class="card mesgBox" style="width: 18rem;">
-      <div class="card-body">
+      <div class="card-body mesgCard">
         <p class="numMesg">Solicitud ${aux}</p>
-        <h5 class="card-title">${mesg.name} ${mesg.l_name}</h5>
+        <h5 class="card-title nameTitle">${mesg.name} ${mesg.l_name}</h5>
         <p class="card-text">Correo: ${mesg.email}</p>
         <p class="card-text">Número: ${mesg.phone}</p>
         <p class="card-text">Mensaje: ${mesg.message}</p>
