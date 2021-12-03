@@ -6,14 +6,20 @@ html {
 
 body{
     font-family: 'Poppins', sans-serif;
-    overflow:scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    text-align: center;
+    background: linear-gradient(
+      60deg,
+      rgba(34, 78, 156, 100) 0%,
+      rgba(0, 172, 193, 1) 100%
+    );
+    color: white;
+    width: 100%;
+    height: 100%;
 }
 .bg-white{
     background-color: white;
-}
-.bg-lightblue{
-    background-color:#60C3D5;
 }
 
 .bg-darkblue{
@@ -208,6 +214,65 @@ span.redbar{
     width: auto;
 }
 
-.border-bottom-white{
-    border-bottom: 1px white solid;
+.border-bottom-gray{
+    border-bottom: 1px gray solid;
+}
+
+.dashboard-heading{
+    background-color: #950101;
+    border-radius: 25px;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: 'Yeseva One';
+    color: white;
+    font-size: 150%;
+    padding-bottom: 2.5%;
+    padding-top: 2.5%;
+}
+
+.dashboard-p{
+    background-color: #EEE0D6;
+    font-family: 'Yeseva One';
+    color: #022565;
+    font-size: 130%;
+    text-align: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.dashboard-title{
+    font-family: 'Yeseva One';
+    color: #EEE0D6;
+    background-color: #154292;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+.dashboard-a{
+    color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.dashboard-a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.checklist-title{
+    color: #950101;
+    font-family: 'Yeseva One';
+    font-size: 350%;
+}
+
+.checklist-days{
+    color: white;
+    font-family: 'Yeseva One';
 }

@@ -1,4 +1,6 @@
-/*NAVBAR*/
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap');
+
+/*NAVBAR y GENERAL*/
 .principalNav {
     background: linear-gradient(
         60deg,
@@ -18,6 +20,33 @@
 
 .nav-pills .nav-link.active {
     background-color: #950101;
+}
+
+.card {
+    border: 2px solid #950101;
+    border-radius: 0.25rem;
+}
+
+/*USUARIOS*/
+.usersContainer {
+    display: flex;
+}
+
+.userBox {
+    margin: 5px;
+}
+
+.numUser {
+    background-color: #D2524A;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+    .usersContainer {
+        display: block;
+    }
 }
 
 /*MENSAJERÍA*/
@@ -54,13 +83,30 @@
     text-align: center;
 }
 
-.mesgCard {
-    background-color: #EDEDED;
-    border-color: 1px solid green;
+@media (max-width: 991.98px) {
+    .mesgContainer {
+        display: block;
+    }
+}
+
+/*SUGERENCIAS*/
+.preferenceContainer {
+    display: flex;
+}
+
+.suggBox {
+    margin: 5px;
+}
+
+.instruction {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-align: center;
 }
 
 @media (max-width: 991.98px) {
-    .mesgContainer {
+    .preferenceContainer {
         display: block;
     }
 }
