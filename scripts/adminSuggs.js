@@ -211,7 +211,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 </div>
               </div>`;
             }
-
+            
             const deleteBtn = document.querySelectorAll(".btn-clear");
             deleteBtn.forEach((btn) => {
               btn.addEventListener("click", async (e) => {
