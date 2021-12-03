@@ -9,6 +9,9 @@ import {
   doc,
   updateDoc
 } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+const auth = getAuth();
 
 const db = getFirestore(app);
 const agendayear = document.getElementById("agenda-year");
@@ -536,43 +539,47 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   $(".loader-wrapper").show();
   getDaysArray(new Date().getFullYear(), new Date().getMonth() + 1);
   $(".loader-wrapper").fadeOut("slow");
-  const content = document.getElementsByClassName("show-content");
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid);
+      const content = document.getElementsByClassName("show-content");
+      btnSubmit.forEach((btn) => {
+        btn.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const day_id = e.target.dataset.id;
+          // console.log(e.target.dataset.id);
+          const scheduleform = document.getElementById(`form-${day_id}`)
+          const taskname_form = document.getElementById(`tk-${day_id}`);
+          const h_in_form = document.getElementById(`h-in-${day_id}`);
+          const min_in_form = document.getElementById(`min-in-${day_id}`);
+          const in_time_form = document.getElementById(`in-time-${day_id}`);
+          const h_end_form = document.getElementById(`h-end-${day_id}`);
+          const min_end_form = document.getElementById(`min-end-${day_id}`);
+          const end_time_form = document.getElementById(`end-time-${day_id}`);
+          const h_start = h_in_form.value + ":" + min_in_form.value + " " + in_time_form.value;
+          const h_end = h_end_form.value + ":" + min_end_form.value + " " + end_time_form.value;
+          // console.log(taskname_form.value);
+          // console.log(h_start, h_end);
+          await agendaform(uid, day_id, taskname_form.value, h_start, h_end);
+          scheduleform.reset();
+          $(`#modal-${day_id}`).modal('hide');
+        });
+      });
 
-  btnSubmit.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const day_id = e.target.dataset.id;
-      // console.log(e.target.dataset.id);
-      const scheduleform = document.getElementById(`form-${day_id}`)
-      const taskname_form = document.getElementById(`tk-${day_id}`);
-      const h_in_form = document.getElementById(`h-in-${day_id}`);
-      const min_in_form = document.getElementById(`min-in-${day_id}`);
-      const in_time_form = document.getElementById(`in-time-${day_id}`);
-      const h_end_form = document.getElementById(`h-end-${day_id}`);
-      const min_end_form = document.getElementById(`min-end-${day_id}`);
-      const end_time_form = document.getElementById(`end-time-${day_id}`);
-      const h_start = h_in_form.value + ":" + min_in_form.value + " " + in_time_form.value;
-      const h_end = h_end_form.value + ":" + min_end_form.value + " " + end_time_form.value;
-      // console.log(taskname_form.value);
-      // console.log(h_start, h_end);
-      await agendaform(0, day_id, taskname_form.value, h_start, h_end);
-      scheduleform.reset();
-      $(`#modal-${day_id}`).modal('hide');
-    });
-  });
-
-  onGetTask((querySnapshot) => {
-    // console.log(btnSubmit);
-    for (let i = 0; i < content.length; i++){
-      content[i].innerHTML = "";
-    }
-    querySnapshot.forEach((doc) => {
-      const task = doc.data();
-      // console.log(task);
-      // console.log(task.day);
-      const showtask = document.getElementById(`show-${task.day}`);
-      // console.log(showtask);
-      showtask.innerHTML += `
+      onGetTask((querySnapshot) => {
+        // console.log(btnSubmit);
+        for (let i = 0; i < content.length; i++) {
+          content[i].innerHTML = "";
+        }
+        querySnapshot.forEach((doc) => {
+          const task = doc.data();
+          if (uid == task.uid){
+                      // console.log(task);
+          // console.log(task.day);
+          const showtask = document.getElementById(`show-${task.day}`);
+          // console.log(showtask);
+          showtask.innerHTML += `
                             <div class="col-4 border-bottom border-dark">
                               <h3>${task.task}
                             </div>
@@ -582,14 +589,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                             <div class="col-4 border-bottom border-dark">
                             </div>
       `
-    });
+          }
+        });
+      });
+    }
   });
-
-  $("#days").on('click','button', function(event){
-    let id_ = $(this).attr('id');
-    // console.log(id_);
-  })
-
 });
 
 //Firebase stuff
