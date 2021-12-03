@@ -100,26 +100,31 @@ span.redbar{
 
 .input-border-bottom{
     border:none;
-    border-bottom: 2px solid #224E9C;
+    border-bottom: 2px solid #60C3D5;
     border-radius: 0;
-    background-color:#60C3D5;
+    background-color: transparent;
     color:#f5f5f5;
 }
   
 .input-border-bottom:focus{
     border:none;
-    border-bottom: 2px solid #224E9C;
+    border-bottom: 2px solid #60C3D5;
     border-radius: 0;
-    background-color:#60C3D5;
+    background-color:transparent;
     color:#f5f5f5;
+}
+
+.input-border-bottom::placeholder{
+    color:white;
+    opacity: 0.7;
 }
 
 .input-border-bottom:-webkit-autofill,
 .input-border-bottom:autofill{
     border:none;
-    border-bottom: 2px solid #224E9C;
+    border-bottom: 2px solid #60C3D5;
     border-radius: 0;
-    background-color:#60C3D5;
+    background-color:transparent;
     color:#f5f5f5;
 }
 
@@ -277,6 +282,10 @@ span.redbar{
 .checklist-days{
     color: white;
     font-family: 'Yeseva One';
+}
+
+#signin{
+    color:black;
 }
 
 #newtask input::placeholder, #newtaskMartes input::placeholder, #newtaskMiercoles input::placeholder, #newtaskJueves input::placeholder, #newtaskViernes input::placeholder, #newtaskFin input::placeholder{

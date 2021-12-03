@@ -4,6 +4,10 @@
     border-style: solid;
     border-color: #224E9C;
 } */
+
+.day-content{
+    color:black;
+}
 .agenda-day{
     text-decoration: none;
     color: black;
