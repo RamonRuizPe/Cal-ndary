@@ -53,7 +53,7 @@ prevmonth.addEventListener('click', () => {
     $('#days').slick('unslick');
         if (date_changes.getMonth() == 0){
             date_changes.setMonth(date_changes.getMonth() - 1);
-            getDaysArray(date_changes.getFullYear() - 1, 12);
+            getDaysArray(date_changes.getFullYear(), 12);
             //ReInit due to its destruction to get another month carousel. 
             $(document).ready(function(){
                 $('#days').slick({
