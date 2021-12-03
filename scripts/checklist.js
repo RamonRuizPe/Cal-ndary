@@ -146,10 +146,26 @@ const deleteTask = (task,day,uid) =>{
         tasks: arrayRemove({dia: day, objetivo: task}),
     });
 }
-
+window.addEventListener('DOMContentLoaded', async(e) =>{
+    onAuthStateChanged(auth, async(user) => {
+        if (user) {
+          const uid = user.uid;
+          await getTasks(uid);
+          const current_tasks_1 = document.querySelectorAll('.delete');
+        console.log(current_tasks_1)
+        for(let i=0; i<current_tasks_1.length; i++){
+            current_tasks_1[i].addEventListener('click', e=> {
+                const day = current_tasks_1[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+                current_tasks_1[i].parentNode.remove();
+                deleteTask(current_tasks_1[i].parentElement.textContent.trim(),day,uid);
+            });
+        }
+    }
+});
+});
 onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.id;
+      const uid = user.uid;
       console.log(uid);
       taskForm.addEventListener('submit', async(e) => {
         e.preventDefault();
@@ -379,20 +395,9 @@ onAuthStateChanged(auth, (user) => {
     //     }
         document.querySelector("#newtaskFin input").value = "";
     });
-    window.addEventListener('DOMContentLoaded', async(e) =>{
-        e.preventDefault();
-        await getTasks(uid);
-        const current_tasks_1 = document.querySelectorAll('.delete');
-        for(let i=0; i<current_tasks_1.length; i++){
-            current_tasks_1[i].addEventListener('click', e=> {
-                const day = current_tasks_1[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
-                current_tasks_1[i].parentNode.remove();
-                deleteTask(current_tasks_1[i].parentElement.textContent.trim(),day,uid);
-            });
-        }
-    });
-    }
+}
   });
+
   
 
 
