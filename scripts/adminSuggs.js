@@ -5,8 +5,9 @@ import {
     addDoc,
     onSnapshot,
     deleteDoc,
-    doc
-  //   updateDoc
+    doc,
+    updateDoc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 
 const db = getFirestore(app);
@@ -89,9 +90,15 @@ const techContainer = document.getElementById("tech-container")
 const astrologyContainer = document.getElementById("astrology-container")
 const animeContainer = document.getElementById("anime-container")
 
+let editStatus = false;
+let id = "";
+
+const getSugg = (id) => getDoc(doc(db, "suggestions", id));
 const onGetSugg = (callback) => onSnapshot(collection(db, "suggestions"), callback);
 const deleteSugg = (id) => deleteDoc(doc(db, "suggestions", id));
 
+const updateSugg = (id, updatedSugg) =>
+  updateDoc(doc(db, "suggestions", id), updatedSugg);
 
 const saveSugg = (title, description, category, date) => {
     addDoc(collection(db, "suggestions"), {
@@ -123,6 +130,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -133,6 +141,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -143,6 +152,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -153,6 +163,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -163,6 +174,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -173,6 +185,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -183,6 +196,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -193,6 +207,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
+                  <button class="btn btn-secondary btn-edit" data-id="${sugg.id}">Edit</button>
                 </div>
               </div>`;
             }
@@ -203,6 +218,22 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 await deleteSugg(e.target.dataset.id)
               })
             })
+
+            const btnsEdit = document.querySelectorAll(".btn-edit");
+            btnsEdit.forEach((btn) => {
+              btn.addEventListener("click", async (e) => {
+                const doc = await getSugg(e.target.dataset.id);
+                const sugg = doc.data();
+
+                editStatus = true;
+                id = doc.id;
+
+                suggestForm["sugg-title"].value = sugg.title;
+                suggestForm["sugg-description"].value = sugg.description;
+                suggestForm["sugg-category"].value = sugg.category;
+                suggestForm["btn-sugg-form"].innerText = "Update";
+             });
+            });
         })
     })
 })
@@ -212,8 +243,23 @@ suggestForm.addEventListener("submit", async (e) => {
     const title = suggestForm["sugg-title"];
     const description = suggestForm["sugg-description"];
     const category = suggestForm["sugg-category"]
+
+    if (!editStatus) {
+      await saveSugg(title.value, description.value, category.value, new Date().getTime());
+    } else {
+      await updateSugg(id, {
+        title: title.value,
+        description: description.value,
+        category: category.value,
+        date : new Date().getTime()
+      });
   
-    await saveSugg(title.value, description.value, category.value, new Date().getTime());
+      editStatus = false;
+      id = "";
+      suggestForm["btn-task-form"].innerText = "Save";
+      suggestForm.reset();
+    }
+    /*await saveSugg(title.value, description.value, category.value, new Date().getTime());*/
 
     suggestForm.reset();
     title.focus();
