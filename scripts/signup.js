@@ -42,7 +42,8 @@ signupform.addEventListener('submit', (e) => {
         name: username,
         l_name: userlname,
         email: signupmail,
-        usertype: 0
+        usertype: 0,
+        tasks: []
       });
     }).then(() =>{
       signupform.reset();

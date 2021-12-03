@@ -38,6 +38,7 @@ signinform.addEventListener('submit', e =>{
         $('#signin').modal('hide');
         
         window.location.pathname = "/Cal-ndary/pages/dashboard.html";
+        //window.location.pathname = "/pages/dashboard.html";
         //Assign alert to user
         const user = Auth.currentUser;
         const name = user.displayName;

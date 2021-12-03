@@ -172,7 +172,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
                   <p class="card-text">Fecha: ${sugg.category}</p>
-                  <button class="btn-delete" data-id="${sugg.id}"></button>
+                  <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
             }
