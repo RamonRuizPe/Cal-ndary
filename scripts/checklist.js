@@ -1,211 +1,395 @@
-document.querySelector('.js-form').addEventListener('submit', e => {
-    if(document.querySelector('#newtask input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+//Bring Firebase Firestore
+import app from "./index.js";
+import {
+    getFirestore,
+    getDoc,
+    arrayRemove,
+    arrayUnion,
+    doc,
+    updateDoc,
+    onSnapshot,
+    collection
+} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+
+//Bring Firebase User Authentication
+// import { getAuth, onAuthStateChanged } from "/firebase/auth";
+
+//Get our Firebase project
+const db = getFirestore(app);
+
+//Get User ID
+// const auth = getAuth();
+// const uid;
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     uid = user.uid;
+//   }
+// });
+const uid = "aBhmD9XuIhTetpG41OGxeDgPNHC3"
+
+//Elements on Monday
+const taskForm = document.querySelector('.task-form-lunes');
+const newTaskLunes = document.querySelector('#newtask input');
+const tasksLunes = document.querySelector('#tasks');
+const taskFormMartes = document.querySelector('.task-form-martes');
+const newTaskMartes = document.querySelector('#newtaskMartes input');
+const tasksMartes = document.querySelector('#tasksMartes');
+const taskFormMiercoles = document.querySelector('.task-form-miercoles');
+const newTaskMiercoles = document.querySelector('#newtaskMiercoles input');
+const tasksMiercoles = document.querySelector('#tasksMiercoles');
+const taskFormJueves = document.querySelector('.task-form-jueves');
+const newTaskJueves = document.querySelector('#newtaskJueves input');
+const tasksJueves = document.querySelector('#tasksJueves');
+const taskFormViernes = document.querySelector('.task-form-viernes');
+const newTaskViernes = document.querySelector('#newtaskViernes input');
+const tasksViernes = document.querySelector('#tasksViernes');
+const taskFormFin = document.querySelector('.task-form-fin');
+const newTaskFin = document.querySelector('#newtaskFin input');
+const tasksFin = document.querySelector('#tasksFin');
+//Load Tasks
+const getTasks = async () => {
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists())
+    {
+        console.log("Document data:", docSnap.data());
+    } 
+    else 
+    {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
     }
-    else{
-        document.querySelector('#tasks').innerHTML += `
+    for(let i=0; i<docSnap.data().tasks.length; i++)
+    {
+        if(docSnap.data().tasks[i].dia == 'lunes'){
+            tasksLunes.innerHTML += `
             <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtask input').value}
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
                 </span>
                 <button class="delete">
                     <i class="far fa-trash-alt"></i>
                 </button>
             </div>
-        `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
+            `;
         }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
+        if(docSnap.data().tasks[i].dia == 'martes'){
+            console.log("entre a martes");
+            tasksMartes.innerHTML += `
+            <div class="task">
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+            `;
         }
-
-        document.querySelector("#newtask input").value = "";
+        if(docSnap.data().tasks[i].dia == 'miércoles'){
+            tasksMiercoles.innerHTML += `
+            <div class="task">
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+            `;
+        }
+        if(docSnap.data().tasks[i].dia == 'jueves'){
+            tasksJueves.innerHTML += `
+            <div class="task">
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+            `;
+        }
+        if(docSnap.data().tasks[i].dia == 'viernes'){
+            tasksViernes.innerHTML += `
+            <div class="task">
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+            `;
+        }
+        if(docSnap.data().tasks[i].dia == 'fin de semana'){
+            tasksFin.innerHTML += `
+            <div class="task">
+                <span class='taskname' id="taskname">
+                    ${docSnap.data().tasks[i].objetivo}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+            `;
+        }
+        
+    }   
 }
+   
+//Create task
+const saveTask = (task,day) =>{
+    const userTasks= doc(db, "users", uid);
+    updateDoc(userTasks,{
+        tasks: arrayUnion({dia: day, objetivo: task}),
+    });
+}
+//Delete Task
+const deleteTask = (task,day) =>{
+    const userTasks = doc (db, "users", uid);
+    updateDoc(userTasks,{
+        tasks: arrayRemove({dia: day, objetivo: task}),
+    });
+}
+
+taskForm.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskLunes.value.length == 0){
+        swal("Por favor, inserta un objetivo");
+    }
+    else{
+        saveTask(newTaskLunes.value,"lunes");
+        tasksLunes.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskLunes.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
+    }
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
+    }
+
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtask input").value = "";
 });
-/*
-document.querySelector('.js-form-martes').addEventListener('submit', e => {
-    if(document.querySelector('#newtaskMartes input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+
+taskFormMartes.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskMartes.value.length == 0){
+        swal("Por favor, inserta un objetivo");
     }
     else{
-        document.querySelector('#tasksMartes').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtaskMartes input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtaskMartes input").value = "";
-}
-});
-document.querySelector('.js-form-miercoles').addEventListener('submit', e => {
-    if(document.querySelector('#newtaskMiercoles input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+        saveTask(newTaskMartes.value,"martes");
+        tasksMartes.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskMartes.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
     }
-    else{
-        document.querySelector('#tasksMiercoles').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtaskMiercoles input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtaskMiercoles input").value = "";
-}
-});
-document.querySelector('.js-form-jueves').addEventListener('submit', e => {
-    if(document.querySelector('#newtaskJueves input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
     }
-    else{
-        document.querySelector('#tasksJueves').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtaskJueves input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtaskJueves input").value = "";
-}
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtaskMartes input").value = "";
 });
 
-
-document.querySelector('.js-form-viernes').addEventListener('submit', e => {
-    if(document.querySelector('#newtaskViernes input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+taskFormMiercoles.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskMiercoles.value.length == 0){
+        swal("Por favor, inserta un objetivo");
     }
     else{
-        document.querySelector('#tasksViernes').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtaskViernes input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
+        saveTask(newTaskMiercoles.value,"miércoles");
+        tasksMiercoles.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskMiercoles.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
+    }
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
+    }
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtaskViernes input").value = "";
-}
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtaskMiercoles input").value = "";
 });
 
-document.querySelector('.js-form-fin').addEventListener('submit', e => {
-    if(document.querySelector('#newtaskFin input').value.length == 0){
-        alert("Por favor, añade un objetivo")
+taskFormJueves.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskJueves.value.length == 0){
+        swal("Por favor, inserta un objetivo");
     }
     else{
-        document.querySelector('#tasksFin').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtaskFin input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
+        saveTask(newTaskJueves.value,"jueves");
+        tasksJueves.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskJueves.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
+    }
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
+    }
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtaskJueves input").value = "";
+});
 
-<<<<<<< Updated upstream
-checklist('lunes');
-checklist('martes');
-checklist('miercoles');
-checklist('jueves');
-checklist('viernes');
-checklist('fin');
-=======
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
+taskFormViernes.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskViernes.value.length == 0){
+        swal("Por favor, inserta un objetivo");
+    }
+    else{
+        saveTask(newTaskViernes.value,"viernes");
+        tasksViernes.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskViernes.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
+    }
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
+    }
 
-        document.querySelector("#newtaskFin input").value = "";
-}
-});*/
->>>>>>> Stashed changes
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtaskViernes input").value = "";
+});
+
+taskFormFin.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    if(newTaskFin.value.length == 0){
+        swal("Por favor, inserta un objetivo");
+    }
+    else{
+        saveTask(newTaskFin.value,"fin de semana");
+        tasksFin.innerHTML += `
+        <div class="task">
+            <span class='taskname' id="taskname">
+                ${newTaskFin.value}
+            </span>
+            <button class="delete">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        `;    
+    }
+    
+    const current_tasks = document.querySelectorAll('.delete');
+    console.log(current_tasks[0]);
+    for(let i=0; i<current_tasks.length; i++){
+        current_tasks[i].addEventListener('click', async(e)=>{
+            const day = current_tasks[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase(); 
+            console.log('entre a borrar fin');
+            current_tasks[i].parentNode.remove();
+            deleteTask(current_tasks[i].parentElement.textContent.trim(),day)
+        });
+    }
+
+// let tasks = document.querySelectorAll(".task");
+//     for(var i=0; i<tasks.length; i++){
+//         tasks[i].onclick = function(){
+//             this.classList.toggle('completed');
+//         }
+//     }
+    document.querySelector("#newtaskFin input").value = "";
+});
+window.addEventListener('DOMContentLoaded', async(e) =>{
+    e.preventDefault();
+    await getTasks();
+    const current_tasks_1 = document.querySelectorAll('.delete');
+    for(let i=0; i<current_tasks_1.length; i++){
+        current_tasks_1[i].addEventListener('click', e=> {
+            const day = current_tasks_1[i].parentNode.parentNode.parentNode.parentElement.firstElementChild.textContent.toLowerCase();
+            current_tasks_1[i].parentNode.remove();
+            deleteTask(current_tasks_1[i].parentElement.textContent.trim(),day);
+        });
+    }
+});
