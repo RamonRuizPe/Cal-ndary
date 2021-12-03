@@ -542,7 +542,6 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      console.log(uid);
       const content = document.getElementsByClassName("show-content");
       btnSubmit.forEach((btn) => {
         btn.addEventListener("click", async (e) => {
@@ -581,10 +580,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           // console.log(showtask);
           showtask.innerHTML += `
                             <div class="col-4 border-bottom border-dark">
-                              <h3>${task.task}
+                              <h4>${task.task}</h4>
                             </div>
                             <div class="col-4 border-bottom border-dark">
-                             <h3>${task.hin} - ${task.hend}</h3>
+                             <h4>${task.hin} - ${task.hend}</h4>
                             </div>
                             <div class="col-4 border-bottom border-dark">
                             </div>
