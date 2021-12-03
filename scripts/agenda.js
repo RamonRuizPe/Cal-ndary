@@ -53,7 +53,7 @@ prevmonth.addEventListener('click', () => {
     $('#days').slick('unslick');
         if (date_changes.getMonth() == 0){
             date_changes.setMonth(date_changes.getMonth() - 1);
-            getDaysArray(date_changes.getFullYear() - 1, 12);
+            getDaysArray(date_changes.getFullYear(), 12);
             //ReInit due to its destruction to get another month carousel. 
             $(document).ready(function(){
                 $('#days').slick({
@@ -223,8 +223,8 @@ const getDaysArray = (function() {
       const result = [];
       agendayear.innerHTML = `Tu agenda ${year}`;
       divmonth.innerHTML = `<h1 class="text-center">${getMonthName(monthIndex).toUpperCase()}</h1>`;
-      prevmonth.innerHTML = `<a href="#" class="a-month"><i class="fas fa-chevron-left"></i> ${getMonthName(monthIndex - 1).toUpperCase()}</a>`;
-      nextmonth.innerHTML = `<a href="#" class="a-month">${getMonthName(monthIndex + 1).toUpperCase()} <i class="fas fa-chevron-right"></i></a>`;
+      prevmonth.innerHTML = `<a href="#" class="a-month text-white"><i class="fas fa-chevron-left"></i> ${getMonthName(monthIndex - 1).toUpperCase()}</a>`;
+      nextmonth.innerHTML = `<a href="#" class="a-month text-white">${getMonthName(monthIndex + 1).toUpperCase()} <i class="fas fa-chevron-right"></i></a>`;
       while (date.getMonth() == monthIndex) {
         // result.push(`${date.getDate()}-${names[date.getDay()]}`);
         days.innerHTML += `
@@ -542,7 +542,6 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      console.log(uid);
       const content = document.getElementsByClassName("show-content");
       btnSubmit.forEach((btn) => {
         btn.addEventListener("click", async (e) => {
@@ -581,10 +580,10 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           // console.log(showtask);
           showtask.innerHTML += `
                             <div class="col-4 border-bottom border-dark">
-                              <h3>${task.task}
+                              <h4>${task.task}</h4>
                             </div>
                             <div class="col-4 border-bottom border-dark">
-                             <h3>${task.hin} - ${task.hend}</h3>
+                             <h4>${task.hin} - ${task.hend}</h4>
                             </div>
                             <div class="col-4 border-bottom border-dark">
                             </div>

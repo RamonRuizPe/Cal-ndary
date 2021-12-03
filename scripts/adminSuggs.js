@@ -48,12 +48,26 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
 /*Preferencias */
 
-const savePreference = (preference) =>{
-  const userPreferences= doc(db, "users", uid);
-  updateDoc(userPreferences,{
-      preferences: arrayUnion({preferencia: preference}),
-  });
-}
+// const savePreference = (preference) =>{
+//   const userPreferences= doc(db, "users", uid);
+//   updateDoc(userPreferences,{
+//       preferences: arrayUnion({preferencia: preference}),
+//   });
+// }
+
+// const savePreferences =  document.getElementById("savePreferences");
+
+// savePreferences.addEventListener('submit', async (e) =>{
+//   e.preventDefault();
+//   let choices = [];
+//   const els = document.querySelectorAll(".preference-btn");
+//   console.log(els);
+//   for (let i = 0; i < els.length; i++){
+//     if (els[i].checked){
+//       choices.push(els[i].value);
+//     }
+//   }
+// });
 
 /*videogameBtn.addEventListener("click", e => {
   e.preventDefault()
