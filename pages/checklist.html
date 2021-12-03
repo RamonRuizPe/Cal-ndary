@@ -10,20 +10,26 @@
     <link rel="icon" type="../image/png" href="https://pluspng.com/img-png/calendar-icon-1600.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
-<body class="bg-lightblue">
-    <div class="row">
-        <div class="col-12">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#">Caléndari</a>
-                <div class="collapse navbar-collapse">
-                    <div class="navbar-nav ml-auto">
-                        <a class="nav-link">Mi perfil</a>
-                        <a class="nav-link">Cerrar sesión</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+<body>
+    <div class="container-fluid p-0 min-vh-100 d-flex flex-column bg-lightblue">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-lightblue">
+            <a class="navbar-brand redwine" href="#">Caléndari</a>
+            <button class="navbar-toggler redwine" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon redwine"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link redwine " href="#contenido">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link redwine " href="#contact p-0">Contacto</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        
     <div class="row mt-5">
         <div class="col-sm-4 text-center">
             <div class="row">
@@ -43,18 +49,20 @@
                     <h3 class="text-center border-bottom-white">LUNES</h3>
                     <div class="container-checklist">
                         <div id="newtask" class="mt-3">
-                            <form class="js-form">
-                                <input type="text" placeholder="Inserta un objetivo">
+                            <form class="task-form-lunes">
+                                <input id="objetivo" type="text" placeholder="Inserta un objetivo" >
                             </form>
                         </div>
-                        <div id="tasks"></div>
+                        <div id="tasks">
+                            <!-- Here goes the user's list-->
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-4 mt-5 ">
                     <h3 class="text-center border-bottom-white">MARTES</h3>
                     <div class="container-checklist">
                         <div id="newtaskMartes" class="mt-3">
-                            <form class="js-form-martes">
+                            <form class="task-form-martes">
                                 <input type="text" placeholder="Inserta un objetivo">
                             </form>
                         </div>
@@ -65,7 +73,7 @@
                 <h3 class="text-center border-bottom-white">MIÉRCOLES</h3>
                 <div class="container-checklist">
                     <div id="newtaskMiercoles" class="mt-3">
-                        <form class="js-form-miercoles">
+                        <form class="task-form-miercoles">
                             <input type="text" placeholder="Inserta un objetivo">
                         </form>
                     </div>
@@ -78,7 +86,7 @@
                     <h3 class="text-center border-bottom-white">JUEVES</h3>
                     <div class="container-checklist">
                         <div id="newtaskJueves" class="mt-3">
-                            <form class="js-form-jueves">
+                            <form class="task-form-jueves">
                                 <input type="text" placeholder="Inserta un objetivo">
                             </form>
                         </div>
@@ -89,7 +97,7 @@
                     <h3 class="text-center border-bottom-white">VIERNES</h3>
                     <div class="container-checklist">
                         <div id="newtaskViernes" class="mt-3">
-                            <form class="js-form-viernes">
+                            <form class="task-form-viernes">
                                 <input type="text" placeholder="Inserta un objetivo">
                             </form>
                         </div>
@@ -100,7 +108,7 @@
                     <h3 class="text-center border-bottom-white">FIN DE SEMANA</h3>
                     <div class="container-checklist">
                         <div id="newtaskFin" class="mt-3">
-                            <form class="js-form-fin">
+                            <form class="task-form-fin">
                                 <input type="text" placeholder="Inserta un objetivo">
                             </form>
                         </div>
@@ -110,5 +118,9 @@
             </div>
         </div>
     </div>
-    <script src="../scripts/checklist.js"></script>
+    </div>
+    
+    <script type="module" src="../scripts/checklist.js"></script>
+    <script type = "module" src="../scripts/index.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
