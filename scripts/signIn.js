@@ -41,7 +41,7 @@ signinform.addEventListener('submit', e =>{
         //Assign alert to user
         const user = Auth.currentUser;
         const name = user.displayName;
-        console.log(user);
+        location.href='../pages/agenda.html'
         swal(`¡Hola ${name}!`, {
           buttons: false,
           timer: 1000,

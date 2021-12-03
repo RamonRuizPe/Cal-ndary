@@ -208,6 +208,65 @@ span.redbar{
     width: auto;
 }
 
-.border-bottom-white{
-    border-bottom: 1px white solid;
+.border-bottom-gray{
+    border-bottom: 1px gray solid;
+}
+
+.dashboard-heading{
+    background-color: #950101;
+    border-radius: 25px;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: 'Yeseva One';
+    color: white;
+    font-size: 150%;
+    padding-bottom: 2.5%;
+    padding-top: 2.5%;
+}
+
+.dashboard-p{
+    background-color: #EEE0D6;
+    font-family: 'Yeseva One';
+    color: #022565;
+    font-size: 130%;
+    text-align: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.dashboard-title{
+    font-family: 'Yeseva One';
+    color: #EEE0D6;
+    background-color: #154292;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+.dashboard-a{
+    color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.dashboard-a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.checklist-title{
+    color: #950101;
+    font-family: 'Yeseva One';
+    font-size: 350%;
+}
+
+.checklist-days{
+    color: white;
+    font-family: 'Yeseva One';
 }

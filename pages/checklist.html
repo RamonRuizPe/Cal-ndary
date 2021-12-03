@@ -10,10 +10,10 @@
     <link rel="icon" type="../image/png" href="https://pluspng.com/img-png/calendar-icon-1600.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
-<body>
+<body class="bg-lightblue">
     <div class="container-fluid p-0 min-vh-100 d-flex flex-column bg-lightblue">
         <nav class="navbar navbar-expand-lg navbar-dark bg-lightblue">
-            <a class="navbar-brand redwine" href="#">Caléndari</a>
+            <a class="navbar-brand redwine" href="dashboard.html">Caléndari</a>
             <button class="navbar-toggler redwine" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon redwine"></span>
             </button>
@@ -21,10 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarsExample05">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link redwine " href="#contenido">Sobre Nosotros</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link redwine " href="#contact p-0">Contacto</a>
+                  <a class="nav-link redwine " id="logout" href="#contact p-0">Cerrar sesión</a>
                 </li>
               </ul>
             </div>
@@ -34,7 +31,7 @@
         <div class="col-sm-4 text-center">
             <div class="row">
                 <div class="col-12">
-                    <h2>Tus objetivos</h2>
+                    <h2 class="checklist-title">TUS <br>OBJETIVOS</h2>
                 </div>
             </div>
             <div class="row">
@@ -46,7 +43,7 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-sm-4 mt-5">
-                    <h3 class="text-center border-bottom-white">LUNES</h3>
+                    <h3 class="text-center border-bottom-gray checklist-days">LUNES</h3>
                     <div class="container-checklist">
                         <div id="newtask" class="mt-3">
                             <form class="task-form-lunes">
@@ -59,7 +56,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 mt-5 ">
-                    <h3 class="text-center border-bottom-white">MARTES</h3>
+                    <h3 class="text-center border-bottom-gray checklist-days">MARTES</h3>
                     <div class="container-checklist">
                         <div id="newtaskMartes" class="mt-3">
                             <form class="task-form-martes">
@@ -70,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 mt-5">
-                <h3 class="text-center border-bottom-white">MIÉRCOLES</h3>
+                <h3 class="text-center border-bottom-gray checklist-days">MIÉRCOLES</h3>
                 <div class="container-checklist">
                     <div id="newtaskMiercoles" class="mt-3">
                         <form class="task-form-miercoles">
@@ -83,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 mt-5">
-                    <h3 class="text-center border-bottom-white">JUEVES</h3>
+                    <h3 class="text-center border-bottom-gray checklist-days">JUEVES</h3>
                     <div class="container-checklist">
                         <div id="newtaskJueves" class="mt-3">
                             <form class="task-form-jueves">
@@ -94,7 +91,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 mt-5">
-                    <h3 class="text-center border-bottom-white">VIERNES</h3>
+                    <h3 class="text-center border-bottom-gray checklist-days">VIERNES</h3>
                     <div class="container-checklist">
                         <div id="newtaskViernes" class="mt-3">
                             <form class="task-form-viernes">
@@ -105,7 +102,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 mt-5">
-                    <h3 class="text-center border-bottom-white">FIN DE SEMANA</h3>
+                    <h3 class="text-center border-bottom-gray checklist-days">FIN DE SEMANA</h3>
                     <div class="container-checklist">
                         <div id="newtaskFin" class="mt-3">
                             <form class="task-form-fin">
@@ -122,5 +119,7 @@
     
     <script type="module" src="../scripts/checklist.js"></script>
     <script type = "module" src="../scripts/index.js"></script>
+    <script type = "module" src="../scripts/logout.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </body>
