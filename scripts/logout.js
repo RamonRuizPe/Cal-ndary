@@ -9,7 +9,7 @@ logout.addEventListener('click', e =>{
     e.preventDefault();
     signOut(auth).then(()=>{
         //Log out successful.
-        window.location.pathname = "/index.html"//"/Cal-ndary/index.html";
+        window.location.pathname = "/Cal-ndary/index.html"//"/Cal-ndary/index.html";
         $('#nav-logout').hide();
         $('#nav-signin').show("fade", 1000);
         // location.reload()

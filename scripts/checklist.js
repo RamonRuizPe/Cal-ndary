@@ -166,7 +166,6 @@ window.addEventListener('DOMContentLoaded', async(e) =>{
 onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      console.log(uid);
       taskForm.addEventListener('submit', async(e) => {
         e.preventDefault();
         if(newTaskLunes.value.length == 0){
