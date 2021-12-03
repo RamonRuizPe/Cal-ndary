@@ -10,6 +10,61 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 
 const db = getFirestore(app);
+
+/* Usuarios */
+const usersContainer = document.getElementById("users-container")
+
+const onGetUser = (callback) => onSnapshot(collection(db, "users"), callback);
+const deleteUser = (id) => deleteDoc(doc(db, "users", id));
+
+window.addEventListener("DOMContentLoaded", async (e) => {
+  onGetUser((querySnapshot) => {
+    usersContainer.innerHTML = "";
+    let aux = 0;
+    querySnapshot.forEach((doc) => {
+      aux++;
+      const user = doc.data();
+      user.id = doc.id;
+
+      usersContainer.innerHTML += `<div class="card userBox" style="width: 18rem;">
+      <div class="card-body userCard">
+        <p class="numUser">Usuario ${aux}</p>
+        <h5 class="card-title nameTitle">${user.name} ${user.l_name}</h5>
+        <p class="card-text">Correo: ${user.email}</p>
+        <button id="clearBtn" class="btn-clear" data-id="${user.id}"></button>
+      </div>
+    </div>`;
+    
+      const clearBtn = document.querySelectorAll(".btn-clear");
+      clearBtn.forEach((btn) => {
+        btn.addEventListener("click", async (e) => {
+          await deleteMesg(e.target.dataset.id)
+        })
+      })
+
+    });
+  })
+})
+
+/*Preferencias */
+
+const savePreference = (preference) =>{
+  const userPreferences= doc(db, "users", uid);
+  updateDoc(userPreferences,{
+      preferences: arrayUnion({preferencia: preference}),
+  });
+}
+
+/*videogameBtn.addEventListener("click", e => {
+  e.preventDefault()
+  document.getElementsById("videogamesBtn").classList.add("btnSelected")
+})
+
+document.getElementById("videogamesBtn").addEventListener("click", function(){
+  this.classList.add("btnSelected")
+})*/
+
+/*Sugerencias */
 const suggestForm = document.getElementById("sugg-form")
 const videogamesContainer = document.getElementById("videogames-container")
 const readingContainer = document.getElementById("reading-container")

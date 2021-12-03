@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="../css/confg.css"/>
     <link rel="stylesheet" href="../css/wavesNavbar.css"/>
+    <link rel="stylesheet" href="../css/style.css">
     <link
       rel="icon"
       type="image/png"
@@ -20,31 +21,35 @@
     />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container-fluid justify-content-between">
-        <div class="col-2">
-          <a class="navbar-brand" href="#">
-            <img
-              src="../img/LogoCalendari.png"
-              alt="Caléndari"
-              width="150"
-              height="80"
-            />
-          </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-lightblue">
+      <a class="navbar-brand" href="dashboard.html">
+        <img
+          src="../img/LogoCalendari.png"
+          alt="Caléndari"
+          width="150"
+          height="80"
+        />
+      </a>
+        <button class="navbar-toggler redwine" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon redwine"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link redwine " href="#">Mi perfil</a>
+            </li>
+            <form id="close-form">
+              <button type="submit" id="logout" class="btn btn-darkblue">Cerrar sesión</button>
+            </form>
+          </ul>
         </div>
-        <div class="col-6">
-          <div class="navLinks">
-            <a class="d-inline p-2 styleElement aElement" href="#">Inicio</a>
-            <a class="d-inline p-2 styleElement aElement" href="#">Cerrar Sesión</a>
-          </div>
-        </div>
-      </div>
     </nav>
     <div class="container-fluid">
       <div class="row leftContainer">
         <div class="col text-center d-none d-sm-block leftContainer">
           <div class="triangle"></div>
-          <img src="../img/Darío.png"  width="400" height="500"/>
+          <img src="../img/Darío.png"  width="350" height="400"/>
         </div>
         <div class="col">
           <div class="row">
@@ -55,44 +60,44 @@
             <div class="container mt-4">
               <div class="row">
                 <div class="col">
-                  <img src="../img/icons8-control-50.png"></img>
+                  <button class="preference-btn" id="videogamesBtn" type="button"></button>
                   <p>Videojuegos</p>
                 </div>
                 <div class="col">
-                  <img src="../img/icons8-libro-60.png"></img>
+                  <input id="readingBtn" class="preference-btn" type="button" value="B" onclick="changeClass(this.id);">
                   <p>Lectura</p>
                 </div>
                 <div class="col">
-                  <img src="../img/icons8-deporte-50.png"></img>
+                  <input id="sportsBtn" class="preference-btn" type="button" value="C" onclick="changeClass(this.id);">
                   <p>Deportes</p>
                 </div>
                 <div class="col">
-                  <img src="../img/icons8-paleta-de-pintura-48.png"></img>
+                  <input id="artBtn" class="preference-btn" type="button" value="D" onclick="changeClass(this.id);">
                   <p>Arte</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
-                  <img src="../img/icons8-cámara-60.png"></img>
+                  <input id="camaraBtn" class="preference-btn" type="button" value="E" onclick="changeClass(this.id);">
                   <p>Fotografía</p>
                 </div>
                 <div class="col">
-                  <img src="../img/icons8-wearable-technology-60.png"></img>
+                  <input id="techBtn" class="preference-btn" type="button" value="F" onclick="changeClass(this.id);">
                   <p>Tecnología</p>
                 </div>
                 <div class="col">
-                  <img src="../img/icons8-stargaze-50.png"></img>
+                  <input id="astrologyBtn" class="preference-btn" type="button" value="G" onclick="changeClass(this.id);">
                   <p>Astrología</p>
                 </div>
                 <div class="col">
-                    <img src="../img/icons8-naruto-50.png"></img>
-                    <p>Anime</p>
+                  <input id="animeBtn" class="preference-btn" type="button" value="H" onclick="changeClass(this.id);">
+                  <p>Anime</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="row mt-4">
-            <button class=" styleElement btn btn-lg btnStyle">Guardar</button>
+            <button id="savePreferences" class="styleElement btn btn-lg btnStyle">Guardar</button>
           </div>
         </div>
       </div>
@@ -111,5 +116,8 @@
         </g>
       </svg>
     </div>
+    <script type="module" src="../scripts/index.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/adminSuggs.js"></script>
   </body>
 </html>

@@ -19,7 +19,9 @@
     position: relative;
     width: 100%;
     margin-bottom: -7px; /*Fix for safari gap*/
-    min-height: 100px;
+    height:20vh;
+    min-height:100px;
+    max-height:150px;
   }
   
   .parallax > use {
@@ -52,8 +54,8 @@
   
   @media (max-width: 768px) {
     .waves {
-      height: 80px;
-      min-height: 80px;
+      height: 40px;
+      min-height: 40px;
     }
     .aElement {
       font-size: 12px;
@@ -72,6 +74,7 @@
       margin-right: -56px;
     }
   }
+
 
   /*Debajo de todo el código se pone lo siguiente 
   <div>

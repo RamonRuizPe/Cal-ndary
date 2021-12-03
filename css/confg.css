@@ -26,6 +26,73 @@ body {
     padding: 5px;
 }
 
+.preference-btn {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+    border: 5px hidden;
+}
+.preference-btn1 {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+    border: 5px hidden;
+}
+
+.btnSelected {
+    border: 10px solid red;
+}
+
+#videogamesBtn {
+    background-image: url("../img/icons8-control-50.png")
+}
+
+#readingBtn {
+    background-image: url("../img/icons8-libro-60.png");
+    height: 55px;
+}
+
+#artBtn {
+    background-image: url("../img/icons8-paleta-de-pintura-48.png");
+}
+
+#sportsBtn {
+    background-image: url("../img/icons8-deporte-50.png");
+}
+
+#techBtn {
+    background-image: url("../img/icons8-wearable-technology-60.png");
+    height: 52px;
+    width: 57px;
+}
+
+#astrologyBtn {
+    background-image: url("../img/icons8-stargaze-50.png");
+}
+
+#camaraBtn {
+    background-image: url("../img/icons8-cámara-60.png");
+    width: 56px;
+}
+
+#animeBtn {
+    background-image: url("../img/icons8-naruto-50.png");
+}
+
 .btnStyle {
     background-color: #d2524a;
     color: white;
