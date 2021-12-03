@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -141,7 +141,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -151,7 +151,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -161,7 +161,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -171,7 +171,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -181,7 +181,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
@@ -191,7 +191,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 <div class="card-body">
                   <h5 class="card-title">${sugg.title}</h5>
                   <p class="card-text">Descripción: ${sugg.description}</p>
-                  <p class="card-text">Fecha: ${sugg.category}</p>
+                  <p class="card-text">Fecha: ${new Date(sugg.date)}</p>
                   <button class="btn-clear" data-id="${sugg.id}"></button>
                 </div>
               </div>`;
