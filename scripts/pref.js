@@ -30,7 +30,7 @@ onAuthStateChanged(auth, (user) => {
             console.log(els);
             for (let i = 0; i < els.length; i++) {
                 if (els[i].checked) {
-                    choices.push(els[i].value);
+                    choices.push(els[i].id);
                 }
             }
             if (choices.length > 3) {
