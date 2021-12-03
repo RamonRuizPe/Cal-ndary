@@ -174,9 +174,11 @@ span.redbar{
 
 #newtask input, #newtaskMartes input, #newtaskMiercoles input, #newtaskJueves input, #newtaskViernes input, #newtaskFin input{
     border: none;
-    color: #111111;
+    color: white;
     font-weight: 500;
     background-color: transparent;
+    border-bottom: 1px solid white;
+    border-radius: 5px;
 }
 #newtask input:focus, #newtaskMartes input:focus, #newtaskMiercoles input:focus, #newtaskJueves input:focus, #newtaskViernes input:focus, #newtaskFin input:focus{
     outline: none;
@@ -284,4 +286,9 @@ span.redbar{
 
 #signin{
     color:black;
+}
+
+#newtask input::placeholder, #newtaskMartes input::placeholder, #newtaskMiercoles input::placeholder, #newtaskJueves input::placeholder, #newtaskViernes input::placeholder, #newtaskFin input::placeholder{
+    color: white;
+    opacity: 0.5;
 }
